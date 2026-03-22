@@ -15,6 +15,8 @@ struct ContentView: View {
         TabView {
             PageScan(selection: $selection)
                 .tabItem{Label("Scan Page", systemImage: "camera")}
+            TextDisplay()
+                .tabItem{Label("Display Text" , systemImage: "printer")}
         }
         .padding()
     }

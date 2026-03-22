@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import SwiftUI
+import Vision
+
+struct TextRec {
+    init(imageResource: ImageResource) {
+        var request = RecognizeTextRequest()
+        let image = UIImage()
+        if let imageData = image.pngData(){}
+    }
+}
+
