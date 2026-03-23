@@ -12,7 +12,7 @@ import Foundation
 
 func promptGemini(prompt: String, image: Data? = nil) async -> String{
 
-    let api_key = "AIzaSyAN3xO6tN5MtoRNt4q0O5Sswm1Gau63Npk"
+    let api_key = "API_KEY_FROM_AI_STUDIO"
     
     let api_url = URL(string: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=\(api_key)")!
     
