@@ -17,6 +17,7 @@ struct Login: View {
     
     @AppStorage("loggedIn") var loggedIn: Bool = false
     @State private var email = ""
+    
     // appropriate use of variable types (private) - we don't anything else to have access
     @State private var password = ""
     
@@ -29,6 +30,7 @@ struct Login: View {
     //Complex AND/OR conditionals
     //Use of string and substring operations
     private var validInfo: Bool {
+        //switch to index in the future
         email.contains("@") && email.contains(".") && password.count >= 6
     }
     
@@ -58,9 +60,7 @@ struct Login: View {
         //If it is not valid then the button doesn't work
         //Data Validation
         .disabled(!validInfo)
-        Button("Login"){
-            
-        }
+
     }
 }
 

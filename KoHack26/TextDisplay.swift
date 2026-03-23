@@ -15,12 +15,11 @@ struct TextDisplay: View {
 
     var body: some View {
         VStack{
-            Button("Clear File"){
-                firebase.writeToFB(text: "", filename: "hebrew.txt", document: "files")
-                lines = []
+            HStack{
+                Text("Font Size: \(String(format: "%.0f", fontSize))")
+                Slider(value: $fontSize, in: 15...30)
+                    .padding()
             }
-            Slider(value: $fontSize, in: 15...30)
-                .padding()
             ScrollView{
                 //Correct use of Data Sort Algorithm on list/array
                 ForEach(lines, id: \.self) { line in
@@ -35,6 +34,10 @@ struct TextDisplay: View {
                     //Text("Translation")
                 }
                 .padding()
+            }
+            Button("Clear File"){
+                firebase.writeToFB(text: "", filename: "hebrew.txt", document: "files")
+                lines = []
             }
         }
         .onAppear() {
