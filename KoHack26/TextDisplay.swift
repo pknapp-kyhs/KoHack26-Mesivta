@@ -9,11 +9,15 @@ import SwiftUI
 
 struct TextDisplay: View {
     @State var fontSize: CGFloat = 20
+    @State var lines: [String] = []
     var body: some View {
         VStack{
+            Button("Clear File"){
+                writeToFile(filename: "hebrew.txt", text: "")
+                lines = readFile()
+            }
             Slider(value: $fontSize, in: 15...30)
                 .padding()
-            let lines = readFile()
             ScrollView{
                 ForEach(lines, id: \.self) { line in
                     Text(line)
@@ -29,18 +33,20 @@ struct TextDisplay: View {
                 .padding()
             }
         }
+        .onAppear(){
+            lines = readFile()
+        }
     }
 }
 
 func readFile() -> [String] {
-    if let url = Bundle.main.url(forResource: "hebrew", withExtension: "txt"),
-       let text = try? String(contentsOf: url, encoding: .utf8) {
+    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("hebrew.txt")
+    if let text = try? String(contentsOf: url, encoding: .utf8){
         let lines = text.components(separatedBy: "\n")
         return lines
     }
     return []
 }
-
 #Preview {
     TextDisplay()
 }

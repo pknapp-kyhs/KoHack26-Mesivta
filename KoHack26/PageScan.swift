@@ -11,9 +11,14 @@ import PhotosUI
 struct PageScan: View {
     @Binding var selection: [PhotosPickerItem]
     @State private var image: UIImage? = nil
+    @State private var response = ""
+    @State private var isLoading = false
     
     var body: some View {
         VStack{
+            if isLoading {
+                ProgressView("Thinking...")
+            }
             PhotosPicker("Choose Image", selection: $selection)
                 .padding()
                 .foregroundColor(.white)
@@ -27,6 +32,10 @@ struct PageScan: View {
                         // If it works to load the image then convert it into a usable image
                         if let data = try? await selection.first?.loadTransferable(type: Data.self) {
                             self.image = UIImage(data: data)
+                            isLoading = true
+                            response = await promptGemini(prompt: "Read all the Hebrew text in this image exactly as it appears, return only the text with no additional commentary. It might also be rashi script so keep that in mind, so it doesn't generate random text. Do not generate nekudos.", image: data)
+                            writeToFile(filename: "hebrew.txt", text: response)
+                            isLoading = false
                         }
                     }
                 }
@@ -38,6 +47,14 @@ struct PageScan: View {
             }
         }
     }
+}
+
+func writeToFile(filename: String, text: String){
+    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(filename)
+    
+    //atomically writes to a temp file to prevent corruption
+    try? text.write(to: url, atomically: true, encoding: .utf8)
+    
 }
 
 //#Preview {

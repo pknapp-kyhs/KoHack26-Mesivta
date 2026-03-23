@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EAADB5222F708D3400C882B6 /* SwiftyTesseract in Frameworks */ = {isa = PBXBuildFile; productRef = EAADB5212F708D3400C882B6 /* SwiftyTesseract */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EA37A46B2F703FA800C61C19 /* KoHack26.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KoHack26.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAADB5222F708D3400C882B6 /* SwiftyTesseract in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = KoHack26;
 			packageProductDependencies = (
+				EAADB5212F708D3400C882B6 /* SwiftyTesseract */,
 			);
 			productName = KoHack26;
 			productReference = EA37A46B2F703FA800C61C19 /* KoHack26.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = EA37A4622F703FA800C61C19;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA37A46C2F703FA800C61C19 /* Products */;
 			projectDirPath = "";
@@ -347,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyTesseract/SwiftyTesseract";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EAADB5212F708D3400C882B6 /* SwiftyTesseract */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */;
+			productName = SwiftyTesseract;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EA37A4632F703FA800C61C19 /* Project object */;
 }
