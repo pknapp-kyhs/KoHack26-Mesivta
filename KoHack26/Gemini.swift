@@ -11,11 +11,8 @@ import Foundation
 
 
 func promptGemini(prompt: String, image: Data? = nil) async -> String{
-    
-    //uses the api key from the secrets.plist - to get an api key go to: https://aistudio.google.com/api-keys?project=gen-lang-client-0982756025
-    let path = Bundle.main.path(forResource: "Secrets", ofType: "plist")!
-    let dict = NSDictionary(contentsOfFile: path)!
-    let api_key = dict["API_Key"] as! String //Claude
+
+    let api_key = "AIzaSyD-ITfHubnRHxaSv90djF_lBhKxfdxZCsQ"
     
     let api_url = URL(string: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=\(api_key)")!
     

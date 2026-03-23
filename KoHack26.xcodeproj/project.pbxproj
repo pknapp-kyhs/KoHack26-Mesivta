@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA271C8E2F716C6700780945 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EA271C8D2F716C6700780945 /* FirebaseAuth */; };
+		EA271C902F716C6700780945 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EA271C8F2F716C6700780945 /* FirebaseFirestore */; };
 		EAADB5222F708D3400C882B6 /* SwiftyTesseract in Frameworks */ = {isa = PBXBuildFile; productRef = EAADB5212F708D3400C882B6 /* SwiftyTesseract */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAADB5222F708D3400C882B6 /* SwiftyTesseract in Frameworks */,
+				EA271C8E2F716C6700780945 /* FirebaseAuth in Frameworks */,
+				EA271C902F716C6700780945 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +88,8 @@
 			name = KoHack26;
 			packageProductDependencies = (
 				EAADB5212F708D3400C882B6 /* SwiftyTesseract */,
+				EA271C8D2F716C6700780945 /* FirebaseAuth */,
+				EA271C8F2F716C6700780945 /* FirebaseFirestore */,
 			);
 			productName = KoHack26;
 			productReference = EA37A46B2F703FA800C61C19 /* KoHack26.app */;
@@ -115,6 +121,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */,
+				EA271C8C2F716C6700780945 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EA37A46C2F703FA800C61C19 /* Products */;
@@ -358,6 +365,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EA271C8C2F716C6700780945 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.11.0;
+			};
+		};
 		EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyTesseract/SwiftyTesseract";
@@ -369,6 +384,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EA271C8D2F716C6700780945 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA271C8C2F716C6700780945 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EA271C8F2F716C6700780945 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EA271C8C2F716C6700780945 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		EAADB5212F708D3400C882B6 /* SwiftyTesseract */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EAADB5202F708D3400C882B6 /* XCRemoteSwiftPackageReference "SwiftyTesseract" */;

@@ -1,8 +1,10 @@
-//
-//  HashPwd.swift
-//  KoHack26
-//
-//  Created by Mendel W on 3/23/26.
-//
-
+import CryptoKit
 import Foundation
+
+func hashPassword(_ password: String) -> String {
+    let data = Data(password.utf8)
+    let hash = SHA256.hash(data: data)
+    return hash.compactMap { String(format: "%02x", $0) }.joined()
+}
+
+

@@ -6,12 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct KoHack26App: App {
+    @AppStorage("loggedIn") var loggedIn = false
+    
+    init(){
+        FirebaseApp.configure()}
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+
+            if loggedIn{
+                ContentView()
+            }
+            else{
+                Login()
+            }
         }
     }
 }

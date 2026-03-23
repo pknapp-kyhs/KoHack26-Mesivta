@@ -9,16 +9,20 @@ import SwiftUI
 
 struct TextDisplay: View {
     @State var fontSize: CGFloat = 20
+    //Appropriate use of Lists/Arrays
     @State var lines: [String] = []
+    let firebase = fBaseAPI()
+
     var body: some View {
         VStack{
             Button("Clear File"){
-                writeToFile(filename: "hebrew.txt", text: "")
-                lines = readFile()
+                firebase.writeToFB(text: "", filename: "hebrew.txt", document: "files")
+                lines = []
             }
             Slider(value: $fontSize, in: 15...30)
                 .padding()
             ScrollView{
+                //Correct use of Data Sort Algorithm on list/array
                 ForEach(lines, id: \.self) { line in
                     Text(line)
                         .multilineTextAlignment(.trailing)
@@ -33,20 +37,15 @@ struct TextDisplay: View {
                 .padding()
             }
         }
-        .onAppear(){
-            lines = readFile()
+        .onAppear() {
+            firebase.readFromFB(filename: "hebrew.txt", document: "files") { result in
+                lines = result
+            }
         }
     }
 }
 
-func readFile() -> [String] {
-    let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("hebrew.txt")
-    if let text = try? String(contentsOf: url, encoding: .utf8){
-        let lines = text.components(separatedBy: "\n")
-        return lines
-    }
-    return []
-}
+
 #Preview {
     TextDisplay()
 }

@@ -8,9 +8,12 @@
 import SwiftUI
 import PhotosUI
 
+//objects with multiple data types
+//Class/Object with simple data types
 struct ContentView: View {
     @State private var selection: [PhotosPickerItem] = []
     
+    //Graphical Output
     var body: some View {
         TabView {
             PageScan(selection: $selection)
