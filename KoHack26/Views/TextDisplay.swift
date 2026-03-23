@@ -39,6 +39,11 @@ struct TextDisplay: View {
                 firebase.writeToFB(text: "", filename: "hebrew.txt", document: "files")
                 lines = []
             }
+            .padding()
+            .foregroundColor(.white) 
+            .background(Color.red)
+            .cornerRadius(10)
+            .shadow(radius: 2)
         }
         .onAppear() {
             firebase.readFromFB(filename: "hebrew.txt", document: "files") { result in

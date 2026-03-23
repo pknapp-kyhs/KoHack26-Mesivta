@@ -47,6 +47,8 @@ struct PageScan: View {
                 Button("Send to AI"){
                     Task{
                         isLoading = true
+                        
+                        //Abstraction
                         response = await promptGemini(prompt: "Read all the Hebrew text in this image exactly as it appears, return only the text with no additional commentary. It might also be rashi script so keep that in mind, so it doesn't generate random text. Do not generate nekudos.", image: imageData!)
                         firebase.writeToFB(text: response, filename: "hebrew.txt", document: "files")
                         isLoading = false
@@ -64,9 +66,15 @@ struct PageScan: View {
                     .resizable()
                     .scaledToFit()
             }
+            Spacer()
             Button("Logout"){
                 loggedIn = false
             }
+            .padding()
+            .foregroundColor(.white)
+            .background(Color.red)
+            .cornerRadius(10)
+            .shadow(radius: 2)
         }
     }
 }

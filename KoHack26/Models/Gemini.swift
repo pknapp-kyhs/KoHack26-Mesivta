@@ -12,13 +12,13 @@ import Foundation
 
 func promptGemini(prompt: String, image: Data? = nil) async -> String{
 
-    let api_key = "API_KEY_FROM_AI_STUDIO"
-    
+    let api_key = ""
     let api_url = URL(string: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=\(api_key)")!
     
     // Make the parts sections of the dict for the prompt - if there is an image it will be different than for just text
     var parts: [[String: Any]] = []
     
+    //Adds the image to the prompt if an image was passed in
     if let image = image{
         parts.append([
             "inline_data": [

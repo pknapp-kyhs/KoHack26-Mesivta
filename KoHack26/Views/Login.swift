@@ -37,6 +37,10 @@ struct Login: View {
     
     var body: some View {
         VStack{
+            Text("Welcome To Ayin")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding()
             //Graphical Interface
             TextField("Email", text: $email)
                 .padding()
@@ -50,8 +54,7 @@ struct Login: View {
             }
             
             
-            
-            Button("Account Creation"){
+            Button("Create Account"){
                 
                 //Sensitive info is hashed
                 let pwd = hashPassword(password)
