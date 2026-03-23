@@ -36,31 +36,43 @@ struct Login: View {
     
     
     var body: some View {
-        
-         //Graphical Interface
-        TextField("Email", text: $email)
-        TextField("Password", text: $password)
-        // Output on user event - error message
-        if password.count < 6{
-            Text("Password is too short, must be at least six charachters")
-        }
-        
-        
-        
-        Button("Account Creation"){
+        VStack{
+            //Graphical Interface
+            TextField("Email", text: $email)
+                .padding()
+            TextField("Password", text: $password)
+                .padding()
+            // Output on user event - error message
+            if password.count < 6 && password != ""{
+                Text("Password is too short, must be at least six charachters")
+                    .foregroundColor(Color.red)
+                    .padding()
+            }
             
-            //Sensitive info is hashed
-            let pwd = hashPassword(password)
-            //code handoff between multiple files in the project
-            firebase.writeToFB(text: email, filename: "email", document: "login")
-            firebase.writeToFB(text: pwd, filename: "password", document: "login")
+            
+            
+            Button("Account Creation"){
+                
+                //Sensitive info is hashed
+                let pwd = hashPassword(password)
+                //code handoff between multiple files in the project
+                firebase.writeToFB(text: email, filename: "email", document: "login")
+                firebase.writeToFB(text: pwd, filename: "password", document: "login")
+                
+                loggedIn = true
+            }
 
-            loggedIn = true
-        }
-        //If it is not valid then the button doesn't work
-        //Data Validation
-        .disabled(!validInfo)
-
+            .padding()
+            .foregroundColor(.white)
+            .background(!validInfo ? Color.gray : Color.blue)
+            .cornerRadius(10)
+            .padding()
+            
+            
+            //If it is not valid then the button doesn't work
+            //Data Validation
+            .disabled(!validInfo)
+        }.padding()
     }
 }
 
